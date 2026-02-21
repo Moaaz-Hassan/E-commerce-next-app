@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { Input, Button } from "@heroui/react";
 import { CreateReview } from "@/app/_services/ReviewsServices";
 import Star from "./Star";
@@ -11,10 +11,15 @@ interface ReviewFormProps {
   productId: string;
   fechdata: () => Promise<void>;
   reviewForUpdate: rewiew | null;
-  setreviewForUpdate : React.Dispatch<React.SetStateAction<string>> ;
+  setreviewForUpdate: React.Dispatch<React.SetStateAction<rewiew | null>>;
 }
 
-function ReviewForm({ productId, fechdata, reviewForUpdate , setreviewForUpdate }: ReviewFormProps) {
+function ReviewForm({
+  productId,
+  fechdata,
+  reviewForUpdate,
+  setreviewForUpdate,
+}: ReviewFormProps) {
   const [ratingnumber, setRatingnumber] = useState(0);
   const [loding, setLoding] = useState(false);
   const [reviewText, setReviewText] = useState("");
@@ -39,7 +44,8 @@ function ReviewForm({ productId, fechdata, reviewForUpdate , setreviewForUpdate 
           setRatingnumber(0);
           setReviewText("");
           await fechdata();
-          setreviewForUpdate("")
+
+          setreviewForUpdate(null);
         } else {
           console.log(respons);
         }
