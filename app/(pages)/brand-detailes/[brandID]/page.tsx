@@ -55,7 +55,7 @@ function page() {
             <Pagination
               page={curantPage}
               onChange={(page) => setCurantPage(page)}
-              total={data?.metadata?.numberOfPages}
+              total={data?.metadata?.numberOfPages ?? 3}
             />
           </div>
         </div>
