@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signin } from "@/app/_services/AuthenticationServices";
 import { LoginSchema } from "@/app/_schema/AuthenticationSchema";
@@ -16,11 +15,15 @@ function Login() {
   const [loding, setLoding] = useState<boolean>(false);
   const [apiErorre, setApiErorre] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const router = useRouter();
-  const SearchParams = useSearchParams();
-  const redirect = SearchParams.get("url");
+  const [redirect, setRedirect] = useState<string | null>(null);
 
+  const router = useRouter();
   const { setTokenContext } = useContext(AuthContext)!;
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setRedirect(searchParams.get("url"));
+  }, []);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -35,7 +38,7 @@ function Login() {
   async function login(value: { email: string; password: string }) {
     setLoding(true);
     const response = await signin(value);
-    if (response?.message == "success") {
+    if (response?.message === "success") {
       setToken(response.token);
       setTokenContext(response.token);
       if (redirect) {
@@ -46,10 +49,8 @@ function Login() {
     } else {
       setApiErorre(response.message);
     }
-
     setLoding(false);
   }
-
   return (
     <div className=" flex mt-14 justify-center items-center  ">
       <div className="  bg-white py-10 px-6 rounded-2xl shadow-2xl">
