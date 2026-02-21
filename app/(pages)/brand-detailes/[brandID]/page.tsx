@@ -12,7 +12,7 @@ function page() {
 
   const [curantPage, setCurantPage] = useState(1);
   const [loding, setLoding] = useState(true);
-  const [data, setData] = useState<productsRespons | []>([]);
+  const [data, setData] = useState<productsRespons>();
 
   useEffect(() => {
     async function getData() {
@@ -30,7 +30,7 @@ function page() {
     getData();
   }, [curantPage]);
 
-  if (data == null) {
+  if (data === null) {
     return (
       <div className=" w-full h-96 flex items-center justify-center">
         <h2 className=" text-gray-800 font-extrabold text-3xl">Error</h2>

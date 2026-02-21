@@ -1,6 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
-import { WishlistResponse } from "@/app/_interfaces/wishlistInterfacee";
+import {  product } from "@/app/_interfaces/wishlistInterfacee";
 import { GetWishlist } from "@/app/_services/WishlistServices";
 import CreateProductsCard from "@/app/_componentes/CreateProductsCard";
 import LodingScrean from "@/app/_componentes/LodingScrean";
@@ -49,7 +48,7 @@ function WishList() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
-        {data.data.map((product) => (
+        {data.data.map((product:product) => (
           <CreateProductsCard key={product._id} product={product} />
         ))}
       </div>

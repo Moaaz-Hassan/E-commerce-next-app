@@ -63,7 +63,7 @@ async function ProductDetailes({ params }: { params: Params }) {
         <AddToCart productId={data.id} />
       </div>
     </div>
-    <ProductReviews productId={productId}/>
+    <ProductReviews productId={Array.isArray(productId) ? productId[0] : productId ?? ""}/>
     </div>
   );
 }

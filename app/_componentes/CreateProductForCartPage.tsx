@@ -13,7 +13,7 @@ import { cartrespons } from "../_interfaces/cartInterfacs";
 
 interface CreateProductProps {
   product: cartProduct;
-  setCartProducts: React.Dispatch<React.SetStateAction<cartrespons | null>>;
+  setCartProducts: React.Dispatch<React.SetStateAction<cartrespons | undefined>>;
 }
 
 function CreateProductForCartPage({

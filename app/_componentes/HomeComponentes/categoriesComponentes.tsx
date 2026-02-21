@@ -1,13 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
-import { cartrespons } from "@/app/_interfaces/cartInterfacs";
+import { categoriesRespons } from "@/app/_interfaces/categoriesInterface";
 import { getAllCategories } from "@/app/_services/categoriesServices";
 import { Skeleton } from "@heroui/react";
 import Link from "next/link";
 
+
+interface Category {
+  _id: string;
+  name: string;
+  image: string;
+}
+
 function CategoriesComponentes() {
   const [loding, setLoding] = useState(true);
-    const [data, setData] = useState<cartrespons | null>(null);
+    const [data, setData] = useState<categoriesRespons >();
   
     useEffect(() => {
       async function getData() {
@@ -46,7 +53,7 @@ function CategoriesComponentes() {
         <div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">categories</h2>
           <div className="w-full overflow-x-scroll scrollbar-hide flex items-center gap-2 flex-wrap">
-            {data?.data.map((category) => (
+            {data?.data.map((category:Category) => (
               <Link key={category._id} href={`/category-detailes/${category._id}`}>
                 <img
                   src={category.image}

@@ -1,7 +1,6 @@
 import { CartItem } from "../_interfaces/ordersintrface"
 import Link from "next/link";
 import Image from "next/image";
-import AddToCart from "./AddToCart";
 import { currencyFormat } from "../_services/currencyFormat";
 
 function CreatProductOrder({ product }: { product: CartItem }) {
@@ -16,9 +15,6 @@ function CreatProductOrder({ product }: { product: CartItem }) {
           height={300}
           className="w-full  h-72  object-contain rounded-xl"
         />
-        <h2 className=" text-sm text-gray-600 font-medium mt-2">
-          {product.product.subcategory.name}
-        </h2>
         <h1 className=" text-gray-900 font-bold  text-2xl line-clamp-1">
           {product.product.title}
         </h1>

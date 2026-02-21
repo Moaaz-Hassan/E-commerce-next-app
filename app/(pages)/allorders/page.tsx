@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import { getUserOrders } from "@/app/_services/ordersServices";
 import { Spinner } from "@heroui/react";
 import { timeAgo } from "@/app/_services/timeFormat";
-import { ordersintrface } from "@/app/_interfaces/ordersintrface";
+import { OrdersInterface , Order } from "@/app/_interfaces/ordersintrface";
 import { currencyFormat } from "@/app/_services/currencyFormat";
 import { Button } from "@heroui/react";
 import CreatProductOrder from "@/app/_componentes/CreatProductOrder";
 
+
 function MyOrders() {
-  const [orders, setOrders] = useState<ordersintrface[] | null>(null);
+  const [orders, setOrders] = useState<OrdersInterface | null>(null);
   const [loading, setLoading] = useState(true);
 
   const [viewProducts, setViewProducts] = useState("");

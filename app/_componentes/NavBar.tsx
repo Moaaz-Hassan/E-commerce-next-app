@@ -17,7 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 
 function NavBar() {
-  const { tokenContext, setTokenContext } = useContext(AuthContext);
+  const { tokenContext, setTokenContext } = useContext(AuthContext)!;
 
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();

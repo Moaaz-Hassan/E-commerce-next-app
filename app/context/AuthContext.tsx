@@ -1,16 +1,25 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react"; // لازم import ReactNode
 import { getToken } from "../_services/cookies";
 
-export const AuthContext = createContext();
+interface AuthContextType {
+  tokenContext: string | null;
+  setTokenContext: (token: string | null) => void;
+}
 
-export default function AuthProvider({ children }) {
-  const [tokenContext, setTokenContext] = useState();
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export default function AuthProvider({ children }: AuthProviderProps) {
+  const [tokenContext, setTokenContext] = useState<string | null>(null);
 
   useEffect(() => {
     const isToken = getToken();
-    setTokenContext(isToken);
+    setTokenContext(isToken ?? null);
   }, []);
 
   return (

@@ -22,7 +22,7 @@ function AddToCart({ productId }: { productId: string }) {
   const [addToCartLodding, setaddToCartLodding] = useState(false);
   const [toggelWishlistLodding, setToggelToWishlistLodding] = useState(false);
   const [status, setStatus] = useState("");
-  const { tokenContext } = useContext(AuthContext);
+  const { tokenContext  } = useContext(AuthContext)!;
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -82,7 +82,7 @@ function AddToCart({ productId }: { productId: string }) {
           // Invalidate the wishlist query so the page refetches the updated data
           // and completely removes the deleted product from the Wishlist UI.
           if(pathname == "/wishlist"){
-            queryClient.invalidateQueries(["getWishProductes"]);
+            queryClient.invalidateQueries({queryKey :["getWishProductes"]});
 
           }
           

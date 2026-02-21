@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect  } from "react";
 import { Input, Button } from "@heroui/react";
 import { CreateReview } from "@/app/_services/ReviewsServices";
 import Star from "./Star";
@@ -25,7 +26,7 @@ function ReviewForm({ productId, fechdata, reviewForUpdate , setreviewForUpdate 
     }
   }, [reviewForUpdate]);
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (reviewForUpdate) {
       if (ratingnumber && reviewText) {
@@ -38,7 +39,7 @@ function ReviewForm({ productId, fechdata, reviewForUpdate , setreviewForUpdate 
           setRatingnumber(0);
           setReviewText("");
           await fechdata();
-          setreviewForUpdate(null)
+          setreviewForUpdate("")
         } else {
           console.log(respons);
         }

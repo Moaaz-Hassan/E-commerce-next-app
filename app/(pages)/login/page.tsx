@@ -20,7 +20,8 @@ function Login() {
   const redirect = SearchParams.get("url") ;
 
 
-  const { setTokenContext } = useContext(AuthContext);
+  const { setTokenContext  } = useContext(AuthContext)!;
+  
 
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);

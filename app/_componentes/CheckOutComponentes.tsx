@@ -13,7 +13,7 @@ import {
   Input,
 } from "@heroui/react";
 
-function CheckOutComponentes({ cartId }: { cartId: string }) {
+function CheckOutComponentes({ cartId }: { cartId: string | undefined}) {
   const city = useRef<null | HTMLInputElement>(null);
   const phone = useRef<null | HTMLInputElement>(null);
   const details = useRef<null | HTMLInputElement>(null);
@@ -31,7 +31,7 @@ function CheckOutComponentes({ cartId }: { cartId: string }) {
       };
 
       setLoding(true);
-      const respons = await checkOutAction(cartId, shppingDetails);
+      const respons = await checkOutAction(cartId  ?? "", shppingDetails);
       if (respons?.status == "success") {
         location.href = respons.session.url;
       }

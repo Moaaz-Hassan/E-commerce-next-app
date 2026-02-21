@@ -10,7 +10,7 @@ import Image from "next/image";
 function Categories() {
   const [curantPage, setCurantPage] = useState(1);
   const [loding, setLoding] = useState(true);
-  const [data, setData] = useState<categoriesRespons | []>([]);
+  const [data, setData] = useState<categoriesRespons >();
 
   useEffect(() => {
     async function getData() {
@@ -27,7 +27,7 @@ function Categories() {
     getData();
   }, [curantPage]);
 
-  if (data == null) {
+  if (data === null) {
     return (
       <div className=" w-full h-96 flex items-center justify-center">
         <h2 className=" text-gray-800 font-extrabold text-3xl">Error</h2>
@@ -69,7 +69,7 @@ function Categories() {
             <Pagination
               page={curantPage}
               onChange={(page) => setCurantPage(page)}
-              total={data?.metadata?.numberOfPages}
+              total={data?.metadata?.numberOfPages ?? 3}
             />
           </div>
         </div>

@@ -13,7 +13,7 @@ import { Alert, Spinner } from "@heroui/react";
 import CheckOutComponentes from "@/app/_componentes/CheckOutComponentes";
 
 function Cart() {
-  const [cartProducts, setCartProducts] = useState<cartrespons | []>([]);
+  const [cartProducts, setCartProducts] = useState<cartrespons >();
   const [loding, setLoding] = useState(true);
 
   const [clearloding, setClearLoding] = useState(false);
@@ -56,7 +56,7 @@ function Cart() {
     getdata();
   }, []);
 
-  if (cartProducts == null) {
+  if (cartProducts === null) {
     return (
       <div className=" w-full h-96 flex items-center justify-center">
         <h2 className=" text-gray-800 font-extrabold text-3xl">Error</h2>
@@ -139,7 +139,7 @@ function Cart() {
                         continue shopping
                       </Button>
                     </Link>
-                    <CheckOutComponentes cartId={cartProducts.cartId} />
+                    <CheckOutComponentes cartId={cartProducts?.cartId} />
                     
                   </div>
                   <div className=" text-end">

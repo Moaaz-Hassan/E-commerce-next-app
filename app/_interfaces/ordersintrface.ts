@@ -1,4 +1,4 @@
-export type ordersintrface = Order[]
+export type OrdersInterface = Order[]
 
 export interface Order {
   taxPrice: number

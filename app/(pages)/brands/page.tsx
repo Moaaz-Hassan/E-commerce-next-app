@@ -10,7 +10,7 @@ import Image from "next/image";
 function Brands() {
   const [curantPage, setCurantPage] = useState(1);
   const [loding, setLoding] = useState(true);
-  const [data, setData] = useState<BrandResponse | []>([]);
+  const [data, setData] = useState<BrandResponse >();
 
   useEffect(() => {
     async function getData() {
@@ -27,7 +27,7 @@ function Brands() {
     getData();
   }, [curantPage]);
 
-  if (data == null) {
+  if (data === null) {
     return (
       <div className=" w-full h-96 flex items-center justify-center">
         <h2 className=" text-gray-800 font-extrabold text-3xl">Error</h2>

@@ -11,12 +11,21 @@ import { setToken } from "@/app/_services/cookies";
 import { AuthContext } from "@/app/context/AuthContext";
 
 
+export interface UserForm {
+  name: string;
+  email: string;
+  password: string;
+  rePassword: string;
+  phone: string;
+}
+
+
 function Register() {
   const [loding, setLoding] = useState(false);
   const [apiError, setApiError] = useState(null);
   const router = useRouter();
 
-  const { setTokenContext } = useContext(AuthContext);
+  const { setTokenContext } = useContext(AuthContext)!;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isRePasswordVisible, setIsRePasswordVisible] = useState(false);
@@ -36,7 +45,7 @@ function Register() {
     resolver: zodResolver(RegisterSchema),
   });
 
-  async function signUp(value) {
+  async function signUp(value:UserForm) {
     setLoding(true);
     const response = await Signup(value);
     if (response?.message == "success") {
