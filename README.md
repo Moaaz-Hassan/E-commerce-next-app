@@ -125,7 +125,7 @@ This structure keeps the application clean, modular, and scalable.
 - PASS_URL=your base url
 
 <h2>
-  <a href="" target="_blank">Click here to see the Live Demo 🌐</a>
+  <a href="https://e-commerce-next-app-murex.vercel.app/" target="_blank">Click here to see the Live Demo 🌐</a>
 </h2>
 
 
