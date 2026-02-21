@@ -13,17 +13,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 function Login() {
-  const [loding, setLoding] = useState(false);
-  const [apiErorre, setApiErorre] = useState(null);
+  const [loding, setLoding] = useState<boolean>(false);
+  const [apiErorre, setApiErorre] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const router = useRouter();
   const SearchParams = useSearchParams();
-  const redirect = SearchParams.get("url") ;
+  const redirect = SearchParams.get("url");
 
+  const { setTokenContext } = useContext(AuthContext)!;
 
-  const { setTokenContext  } = useContext(AuthContext)!;
-  
-
-  const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const { handleSubmit, register, formState } = useForm({
@@ -40,12 +38,11 @@ function Login() {
     if (response?.message == "success") {
       setToken(response.token);
       setTokenContext(response.token);
-      if(redirect){
-        router.replace(redirect)
-      }else{
+      if (redirect) {
+        router.replace(redirect);
+      } else {
         router.replace("/");
       }
-      
     } else {
       setApiErorre(response.message);
     }
