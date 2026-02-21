@@ -1,8 +1,9 @@
-export function timeAgo(dateString) {
-  const now = new Date();
-  const past = new Date(dateString);
+export function timeAgo(dateString: string): string {
+  const now: Date = new Date();
+  const past: Date = new Date(dateString);
 
-  const seconds = Math.floor((now - past) / 1000);
+  // convert to number of milliseconds
+  const seconds = Math.floor((now.getTime() - past.getTime()) / 1000);
 
   if (seconds < 60) return "just now";
 

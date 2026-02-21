@@ -17,7 +17,7 @@ export async function getProducts(curantPage: number) {
   }
 }
 
-export async function getProductDetailes(id) {
+export async function getProductDetailes(id: string) {
   try {
     const response = await fetch(
       `https://ecommerce.routemisr.com/api/v1/products/${id}`,
