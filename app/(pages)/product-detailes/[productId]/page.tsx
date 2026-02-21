@@ -8,8 +8,8 @@ import { currencyFormat } from "@/app/_services/currencyFormat";
 import ProductReviews from "@/app/_componentes/ReviewsComponentes/ProductReviews";
 
 async function ProductDetailes({ params }: { params: Params }) {
-  const { productId } = await params;
-  const { data }: { data: product } = await getProductDetailes(productId);
+  const { productId  } = await params;
+  const { data }: { data: product } = await getProductDetailes(productId as "");
 
   if (data == null) {
     return (
