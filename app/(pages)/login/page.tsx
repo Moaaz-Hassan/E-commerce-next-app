@@ -17,6 +17,8 @@ function Login() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [redirect, setRedirect] = useState<string | null>(null);
 
+  const [email, setEmail] = useState<string | null>(null);
+
   const router = useRouter();
   const { setTokenContext } = useContext(AuthContext)!;
 
@@ -36,6 +38,7 @@ function Login() {
   });
 
   async function login(value: { email: string; password: string }) {
+
     setLoding(true);
     const response = await signin(value);
     if (response?.message === "success") {
@@ -48,6 +51,7 @@ function Login() {
       }
     } else {
       setApiErorre(response.message);
+      setEmail(value.email)
     }
     setLoding(false);
   }
@@ -126,6 +130,16 @@ function Login() {
             LogIn
           </Button>
         </form>
+        {apiErorre && (
+          <div className=" mt-2">
+          <Link
+            className=" text-blue-500 cursor-pointer font-semibold text-medium"
+            href={`forgot-password/${email}`}
+          >
+            Forgot Password ?
+          </Link>
+          </div>
+        )}
         <p className=" mt-2">
           If you don't have an account to please{" "}
           <Link href={"/register"} className=" text-blue-500 pl-1">

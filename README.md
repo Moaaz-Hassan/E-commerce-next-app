@@ -77,6 +77,7 @@ This structure keeps the application clean, modular, and scalable.
 ##  Authentication
 - **User Signup** – Register a new account easily.  
 - **User Signin** – Log in to access all features.  
+- **Forgot Password (OTP via Email)** – If the user forgets their password, they can request a reset code sent to their email. After verifying the OTP, they can securely create a new password.
 - **Cookie-based authentication** – Stay logged in securely.  
 
 ##  Wishlist
@@ -116,6 +117,9 @@ This structure keeps the application clean, modular, and scalable.
 <img src="./Screenshots/Xiaomi-Mi-11i-localhost.png" alt="Xiaomi Mi 11i" width="200" />  
 <img src="./Screenshots/iPad-Mini-localhost.png" alt="iPad Mini" width="270" />  
 <img src="./Screenshots/iPhone-14-Plus-localhost.png" alt="iPhone 14 Plus" width="200" />  
+<img src="./Screenshots/iPad-Mini-localhost.png" alt="iPad Mini" width="270" />  
+<img src="./Screenshots/sendCode.png" alt="iPhone 14 Plus" width="200" />  
+<img src="./Screenshots/reSetPassword.png" alt="iPhone 14 Plus" width="200" />  
 
 
 ## Environment Variables
